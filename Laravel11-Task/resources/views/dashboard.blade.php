@@ -8,8 +8,15 @@
             
             <h1 style="font-size: 2rem; font-weight: bold;"> Bienvenido al gestor de tareas </h1>
             
-            {{ Auth::user()->name }}
+            {{ Auth::user()->name }} tienes {{ Auth::user()->task->count() }} tareas.
             
+            <br>
+            Aqui la tienes:
+            <br>
+            @foreach (Auth::user()->task as $task)
+                <p style="color:red ">{{ $task->title }}</p>
+                <p style="color:blue "> {{ $task->description }}</p>
+            @endforeach
             </div>
             
             
